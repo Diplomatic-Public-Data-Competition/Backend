@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BoardController {
     private final BoardService boardService;
     @GetMapping(value="board-list")
-    ResponseEntity<?> getBoardList( @RequestParam("pageNumber") int pageNumber) {
+    ResponseEntity<?> getBoardList( @RequestParam(name = "pageNumber",defaultValue = "1") int pageNumber) {
         return new ResponseEntity<>(boardService.getBoardList(pageNumber), HttpStatus.OK);
     }
 }
