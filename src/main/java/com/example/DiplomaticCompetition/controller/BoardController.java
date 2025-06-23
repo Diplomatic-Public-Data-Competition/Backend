@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class BoardController {
     private final BoardService boardService;
     @GetMapping(value="board-list")
-    ResponseEntity<?> getBoardList( @RequestParam(name = "pageNumber",defaultValue = "1") int pageNumber) {
+    public ResponseEntity<?> getBoardList( @RequestParam(name = "pageNumber",defaultValue = "1") int pageNumber) {
         return new ResponseEntity<>(boardService.getBoardList(pageNumber), HttpStatus.OK);
+    }
+    @GetMapping(value = "/board-detail") //상세 페이지
+    public ResponseEntity<?> getBookDetailInfo( @RequestParam("boardId") Long boardId) { //
+        return new ResponseEntity<>(boardService.getBookDetailInfo(boardId), HttpStatus.OK);
     }
 }
