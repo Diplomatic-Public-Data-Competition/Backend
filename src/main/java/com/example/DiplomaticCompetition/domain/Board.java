@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class board {
+public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
