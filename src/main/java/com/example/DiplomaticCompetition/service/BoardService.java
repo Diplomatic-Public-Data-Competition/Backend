@@ -19,7 +19,7 @@ import java.util.List;
 public class BoardService {
     private final BoardRepository boardRepository;
     public List<BoardListDto>getBoardList(int offset){
-        PageRequest pageRequest = PageRequest.of(offset / 10, 10); // offset부터 10개
+        PageRequest pageRequest = PageRequest.of(offset-1, 10); // offset부터 10개
         List<BoardListDto> boardListDtos = new ArrayList<>();
         List<Board>  boarList = boardRepository.findBoardWithOffset(offset, pageRequest);
         for (Board board : boarList){
