@@ -2,6 +2,7 @@ package com.example.DiplomaticCompetition.service;
 
 
 import com.example.DiplomaticCompetition.domain.Board;
+import com.example.DiplomaticCompetition.dto.response.BoardDetailDto;
 import com.example.DiplomaticCompetition.dto.response.BoardListDto;
 import com.example.DiplomaticCompetition.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,17 @@ public class BoardService {
             boardListDtos.add(boardListDto);
         }
         return boardListDtos;
+    }
+    public  BoardDetailDto getBookDetailInfo(Long id){
+
+        Board board = boardRepository.findById(id).get();
+        BoardDetailDto boardDetailDtos  = BoardDetailDto.builder().
+                title(board.getTitle()).
+                likeCount(board.getLikeCount()).
+                content(board.getContent()).
+                nickName(board.getNickName()).
+                build();
+        return boardDetailDtos;
     }
 
 }
